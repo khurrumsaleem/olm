@@ -1,9 +1,9 @@
 ## ORIGEN Library Manager (OLM)
 
-[![Documentation Status](https://readthedocs.org/projects/scale-olm/badge/?version=v0.14.2)](https://scale-olm.readthedocs.io/en/v0.14.2)
+[![Documentation Status](https://readthedocs.org/projects/scale-olm/badge/?version=v0.14.3)](https://scale-olm.readthedocs.io/en/v0.14.3)
 [![codecov](https://codecov.io/gh/wawiesel/olm/branch/main/graph/badge.svg)](https://codecov.io/gh/wawiesel/olm)
 
-The latest stable version is [v0.14.2](https://scale-olm.readthedocs.io/en/stable).
+The latest stable version is [v0.14.3](https://scale-olm.readthedocs.io/en/stable).
 
 OLM is a command-line utility that streamlines aspects of using the 
 [SCALE/ORIGEN](https://scale.ornl.gov) library to solve nuclide inventory generation problems.
@@ -50,15 +50,19 @@ If you get an error about missing `virtualenv`, you may need to install it.
 $ pip install virtualenv
 ```
 
-### Install requirements
+### Install development dependencies
 
-After enabling the virtual environment, run this command to install dependencies.
+After enabling the virtual environment, install OLM with the optional dependencies
+needed for testing and documentation.
 
 ```console
-$ pip install -r requirements.txt
+$ pip install --editable ".[test,docs,notebooks]"
 ```
 
-NOTE: if you need to regenerate the requirements file after adding dependencies.
+The project metadata in `pyproject.toml` is the source of truth for package
+dependencies. The checked-in `requirements.txt` file is a pinned development
+snapshot. If you need to regenerate it after changing dependencies:
+
 ```console
 $ pip freeze | grep -v '^\-e'>requirements.txt
 ```
@@ -69,7 +73,7 @@ This command will enable any changes you make to instantly propagate to the exec
 you can run just with `olm`.
 
 ```console
-$ pip install --editable .
+$ pip install --editable ".[test,docs,notebooks]"
 $ olm
 $ which olm
 ```
